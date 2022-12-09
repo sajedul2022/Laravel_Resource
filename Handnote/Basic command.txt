@@ -1,0 +1,35 @@
+--- File map ---
+
+1. Controller
+App>http>controller
+
+2. View
+resource>views
+
+3. Model
+app>model
+
+4. Route
+Directory
+
+
+
+
+----- CLI Command ----
+
+
+
+
+1. run 
+	php artisan serve
+
+2. make middleare
+	php artisan make:middleware CheckAge
+
+3. make controller
+	php artisan make:controller showAge
+
+4. invokable Controller
+	php artisan make:controller testController --invokable
+
+5. Laravel authintication middlware 

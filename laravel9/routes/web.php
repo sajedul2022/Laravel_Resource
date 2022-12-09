@@ -29,7 +29,7 @@ Route::get('/there', function () {
 }); 
 
 // Redirect
-Route::redirect('/contact', '/there');
+Route::redirect('/contact2', '/there');
 
 // Route::view('/welcome', 'about', ['name' => 'Sajedeul']);
 
@@ -85,3 +85,106 @@ Route::get('/user5/{id}', function ($id) {
 Route::get('/user6/{id}', function ($id) {
     return "Welcome , Your Id is: $id";
 });
+
+//Encoded Forward Slashes
+
+Route::get('/search/{search}', function ($search) {
+    return $search;
+})->where('search', '.*');
+
+// Named Routes
+Route::get('/profile/signup/dashboard', function () {
+    return route("login",["id"=>"01", "coupon"=>"WDPF"]);
+})->name('login');
+
+// Route::get('/profile/signup/dashboard', function () {
+//     return route("login");
+// })->name('login');
+
+// Route Groups
+
+Route::group(["prefix"=>"/product"], function(){  
+    Route::get('/create',function(){  
+    echo "First route for Create/Insert";
+    });  
+    Route::get('/read',function(){  
+    echo "Second route for Read";  
+    });  
+    Route::get('/update/{id}',function($id){  
+    echo "Third route for Update";  
+    });
+    Route::get('/delete/{id}',function($id){  
+     echo "Fourth route for Delete";  
+     });  
+ });
+
+ // Route Prefixes
+ Route::group(["prefix"=>"/user"], function(){  
+    Route::get('/create',function(){  
+    echo "First route for Create/Insert";
+    });  
+    Route::get('/read',function(){  
+    echo "Second route for Read";  
+    });  
+    Route::get('/update/{id}',function($id){  
+    echo "Third route for Update. $id";  
+    });
+    Route::get('/delete/{id}',function($id){  
+     echo "Fourth route for Delete";  
+     });  
+ });
+
+ //Route Group Controller
+
+// use App\Http\Controllers\UserController;
+
+// Route::prefix('user')
+//     ->name('user.')
+//     ->controller(UserController::class)
+//     ->group(function () {
+//         Route::get('/create','create')->name('create');  
+//         Route::get('/read','read')->name('read'); 
+//         Route::get('/update/{id}','update')->name('update');
+//         Route::get('/delete/{id}','delete')->name('delete'); 
+// });
+
+// Middleware
+
+use App\Http\Controllers\showAge;
+use App\Http\Middleware\checkAge;
+ 
+Route::middleware([checkAge::class])->group(function(){
+  
+    Route::get('showage', [showAge::class,'index']);
+  
+ });
+
+
+// Controller USe
+
+// use App\Http\Controllers\homeController;
+
+use App\Http\Controllers\homeController;
+
+
+Route::get('/home/{name?}/{age?}', [homeController::class, 'index']);
+
+
+// নির্দিষ্ট Method এ কোনো নির্দিষ্ট Parameter ছাড়া যেকোনো Request Receive করা
+
+ 
+Route::get('/geturldata', [homeController::class, 'geturldata']);
+
+// ------- USer Control -----------
+
+use App\Http\Controllers\UserController;
+ 
+Route::get('/userlist/{id}', [UserController::class, 'show']);
+
+// Single Action/invokable controller
+
+use App\Http\Controllers\testController;
+ 
+Route::get('/{pages}', testController::class)
+    ->name('pagelink')
+    ->where('invokable-pages','faq|contact|terms');
