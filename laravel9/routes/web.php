@@ -160,9 +160,9 @@ Route::middleware([checkAge::class])->group(function(){
  });
 
 
-// Controller USe
+// Controller Use 
 
-// use App\Http\Controllers\homeController;
+
 
 use App\Http\Controllers\homeController;
 
@@ -183,8 +183,16 @@ Route::get('/userlist/{id}', [UserController::class, 'show']);
 
 // Single Action/invokable controller
 
-use App\Http\Controllers\testController;
+// use App\Http\Controllers\testController;
  
-Route::get('/{pages}', testController::class)
-    ->name('pagelink')
-    ->where('invokable-pages','faq|contact|terms');
+// Route::get('/{pages}', testController::class)
+//     ->name('pagelink')
+//     ->where('invokable-pages','faq|contact|terms');
+// Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Post man Api Check 
+Route::get('test', function(){
+    return "Hello, Laravel";
+});

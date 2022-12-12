@@ -1,0 +1,19 @@
+goto->  DatabaseSeeder.php
+
+
+
+
+// seeding database new store or entry
+
+	use App\Models\User;
+
+        $user = new User();
+        $user->name = 'sajid';
+        $user->email = 'sajid@gmail.com';
+        $user->password = bcrypt('password');
+
+        $user->save();
+
+// for run cmd
+
+	php artisan migrate:fresh --seed

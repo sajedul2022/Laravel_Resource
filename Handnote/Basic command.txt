@@ -33,3 +33,9 @@ Directory
 	php artisan make:controller testController --invokable
 
 5. Laravel authintication middlware 
+
+	composer require laravel/ui
+	php artisan ui bootstrap
+	php artisan ui bootstrap --auth
+	npm install
+	npm run dev
