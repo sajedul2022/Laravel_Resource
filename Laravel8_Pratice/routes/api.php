@@ -34,3 +34,12 @@ Route::get('/product/{id?}', function($id=null){
 Route::get('/users/{name?}', function($name=null){
     return( "Hello $name!");
 });
+
+// match Route
+Route::match(['get', 'post'], '/student', function(Request $req){
+    return "Method: ". $req->method();
+});
+
+Route::any('/any', function(Request $req){
+    return "Method: ". $req->method();
+});

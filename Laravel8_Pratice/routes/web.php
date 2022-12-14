@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\houseController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,55 +20,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-
-Route::get('/student', function(){
-    return "Hello, Larvel Student";
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::redirect('/student', '/there');
+require __DIR__.'/auth.php';
 
-Route::get('/there', function(){
-    return "Hello, Yor are There";
+// match Route
+Route::match(['get', 'post'], '/student', function(Request $req){
+    return "Method: ". $req->method();
 });
 
-
-
-
-Route::get('/contact', function () {
-    return view('contact');
+Route::any('/any', function(Request $req){
+    return "Method: ". $req->method();
 });
 
-// Route::get('/user/{name?}', function($name=null){
-//     return( "Hello $name!");
-// })->where('name', '[A-Za-z]+');
+// controller Route
 
-// Route::get('/user/{id?}', function($id=null){
-//     return( "Hello $id!");
-// })->where('id', '[0-9]+');
-
-// Controller
-
-use App\Http\Controllers\homeController;
-
-Route::get('/home/{name?}/{age?}', [homeController::class, 'index']);
-
-Route::get('/geturldata', [homeController::class, 'geturldata']);
-
-// user controller databaase connectionn
-
-use App\Http\Controllers\UserController;
- 
-Route::get('/user/{id}', [UserController::class, 'show']);
-
-// Auto reload
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-// Crud Resource
-
-use App\Http\Controllers\ProductController;
- 
-Route::resource('products', ProductController::class);
+Route::get('/house/{name?}', [houseController::class, 'index']);
