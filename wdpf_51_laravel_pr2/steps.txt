@@ -107,5 +107,17 @@
     }
 
     php artisan db:seed
-    ==================================================================================================
+
+==================================================================================================
+
 1. php artisan make:controller dashboardController
+2. show route list
+    php artisan route:list
+
+    =================== Crud =====================
+
+1. use Illuminate\Support\Str;
+
+    {{ Str::of($product->product_details)->words(5,'>>>') }}
+
+    {{ Str::limit($product->product_details,30,'>>>') }}

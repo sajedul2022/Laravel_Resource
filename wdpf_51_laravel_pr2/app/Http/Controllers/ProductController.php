@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -13,7 +15,11 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        return view('backend.products.index');
+
+        $data['cats'] = Category::orderBy('cat_name', 'ASC')->get();
+        $data['products'] = Product::orderBy('id', 'DESC')->get();
+        // dd($data);
+        return view('backend.products.index', $data);
     }
 
     /**
@@ -32,9 +38,21 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request){
+
+        $data = new Product();
+
+        $data->product_name =  $request->product_name;
+        $data->product_details =  $request->product_details;
+        $data->product_price =  $request->product_price;
+        $data->product_category =  $request->product_category;
+        $data->product_stock =  $request->product_stock;
+        $data->product_image =  $request->product_image;
+
+        $data->save();
+
+        return redirect('/products');
+
     }
 
     /**
