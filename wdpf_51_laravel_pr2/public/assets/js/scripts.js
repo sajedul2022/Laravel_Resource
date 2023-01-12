@@ -102,7 +102,7 @@
         NioApp.Passcode('.passcode-switch');
     };
 
-    // Toastr Message @v1.0 
+    // Toastr Message @v1.0
     NioApp.Toast = function (msg, ttype, opt) {
         var ttype = (ttype) ? ttype : 'info', msi = '',
             ticon = (ttype === 'info') ? 'ni ni-info-fill' : ((ttype === 'success') ? 'ni ni-check-circle-fill' : ((ttype === 'error') ? 'ni ni-cross-circle-fill' : ((ttype === 'warning') ? 'ni ni-alert-fill' : ''))),
@@ -322,8 +322,8 @@
 
     //On change validation for third party plugins
     NioApp.Validate.OnChange  = function (elm) {
-        $(elm).on('change', function() { 
-            $(this).valid(); 
+        $(elm).on('change', function() {
+            $(this).valid();
         });
     }
 
@@ -873,3 +873,8 @@
 
     return NioApp;
 })(NioApp, jQuery);
+
+
+
+
+

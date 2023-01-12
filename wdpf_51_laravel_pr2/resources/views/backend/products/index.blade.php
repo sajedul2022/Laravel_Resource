@@ -53,121 +53,131 @@
         </div><!-- .nk-block-head -->
 
         {{-- table --}}
-            <div class="nk-block">
-                <table class="nk-tb-list is-separate nk-tb-ulist">
-                    <thead>
-                        <tr class="nk-tb-item nk-tb-head">
-                            <th class="nk-tb-col nk-tb-col-check">
-                                <div class="custom-control custom-control-sm custom-checkbox notext">
-                                    <label class="custom-control-label" for="pid-all">Check</label>
-                                    <input type="checkbox" class="custom-control-input" id="pid-all">
-                                </div>
-                            </th>
-                            <th class="nk-tb-col"><span class="sub-text">ID</span></th>
-                            <th class="nk-tb-col"><span class="sub-text">Product Name</span></th>
-                            <th class="nk-tb-col"><span class="sub-text">Product Details</span></th>
-                            <th class="nk-tb-col"><span class="sub-text">Product Price</span></th>
-                            <th class="nk-tb-col"><span class="sub-text">Product Image</span></th>
-                            <th class="nk-tb-col"><span class="sub-text">Product Stock</span></th>
-                            <th class="nk-tb-col"><span class="sub-text">Product Category</span></th>
+        <div class="nk-block">
+            <table class="nk-tb-list is-separate nk-tb-ulist">
+                <thead>
+                    <tr class="nk-tb-item nk-tb-head">
+                        <th class="nk-tb-col nk-tb-col-check">
+                            <div class="custom-control custom-control-sm custom-checkbox notext">
+                                <label class="custom-control-label" for="pid-all">Check</label>
+                                <input type="checkbox" class="custom-control-input" id="pid-all">
+                            </div>
+                        </th>
+                        <th class="nk-tb-col"><span class="sub-text">ID</span></th>
+                        <th class="nk-tb-col"><span class="sub-text">Product Name</span></th>
+                        <th class="nk-tb-col"><span class="sub-text">Product Details</span></th>
+                        <th class="nk-tb-col"><span class="sub-text">Product Price</span></th>
+                        <th class="nk-tb-col"><span class="sub-text">Product Image</span></th>
+                        <th class="nk-tb-col"><span class="sub-text">Product Stock</span></th>
+                        <th class="nk-tb-col"><span class="sub-text">Product Category</span></th>
 
-                            <th class="nk-tb-col nk-tb-col-tools text-end">
-                                <div class="dropdown">
-                                    <a href="#" class="btn btn-xs btn-trigger btn-icon dropdown-toggle me-n1"
-                                        data-bs-toggle="dropdown" data-offset="0,5"><em class="icon ni ni-more-h"></em></a>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <ul class="link-list-opt no-bdr">
-                                            <li><a href="#"><em class="icon ni ni-check-round-cut"></em><span>Mark As
-                                                        Done</span></a></li>
-                                            <li><a href="#"><em class="icon ni ni-archive"></em><span>Mark As
-                                                        Archive</span></a></li>
-                                            <li><a href="#"><em class="icon ni ni-trash"></em><span>Remove
-                                                        Projects</span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </th>
-                        </tr><!-- .nk-tb-item -->
-                    </thead>
-                    <tbody>
-
-                        @foreach ($products as $product)
-                            <tr class="nk-tb-item">
-
-
-                                <td class="nk-tb-col nk-tb-col-check">
-                                    <div class="custom-control custom-control-sm custom-checkbox notext">
-                                        <input type="checkbox" class="custom-control-input" id="pid-01">
-                                        <label class="custom-control-label" for="pid-01"></label>
-                                    </div>
-                                </td>
-
-                                <td class="nk-tb-col">
-                                    <span>{{ $product->id }}</span>
-                                </td>
-
-                                <td class="nk-tb-col">
-                                    <div class="project-info">
-                                        <h6 class="title">{{ $product->product_name }}</h6>
-                                    </div>
-                                </td>
-
-                                <td class="nk-tb-col tb-col-lg">
-                                    {{-- <span>{{ Str::of($product->product_details)->words(5,'>>>') }} </span> --}}
-                                    <span>{{ Str::limit($product->product_details, 30, '>>>') }} </span>
-                                </td>
-
-                                <td class="nk-tb-col tb-col-lg">
-                                    <span>{{ $product->product_price }} </span>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                    {{-- <span>{{ $product->product_image }} </span> --}}
-                                    <img height="80" width="80" src="{{ $product->product_image }}" alt="">
-
-                                </td>
-
-                                <td class="nk-tb-col tb-col-lg">
-                                    <span>{{ $product->product_stock }} </span>
-                                </td>
-
-                                <td class="nk-tb-col tb-col-lg">
-                                    <span>{{ $product->product_category }} </span>
-                                </td>
-
-
-                                <td class="nk-tb-col nk-tb-col-tools">
-                                    <ul class="nk-tb-actions gx-1">
-                                        <li>
-                                            <div class="drodown">
-                                                <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger"
-                                                    data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <ul class="link-list-opt no-bdr">
-                                                        <li><a href="html/apps-kanban.html"><em
-                                                                    class="icon ni ni-eye"></em><span>View Project</span></a>
-                                                        </li>
-                                                        <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit
-                                                                    Project</span></a></li>
-                                                        <li><a href="#"><em
-                                                                    class="icon ni ni-check-round-cut"></em><span>Mark As
-                                                                    Done</span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </li>
+                        <th class="nk-tb-col nk-tb-col-tools text-end">
+                            <div class="dropdown">
+                                <a href="#" class="btn btn-xs btn-trigger btn-icon dropdown-toggle me-n1"
+                                    data-bs-toggle="dropdown" data-offset="0,5"><em class="icon ni ni-more-h"></em></a>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <ul class="link-list-opt no-bdr">
+                                        <li><a href="#"><em class="icon ni ni-check-round-cut"></em><span>Mark As
+                                                    Done</span></a></li>
+                                        <li><a href="#"><em class="icon ni ni-archive"></em><span>Mark As
+                                                    Archive</span></a></li>
+                                        <li><a href="#"><em class="icon ni ni-trash"></em><span>Remove
+                                                    Projects</span></a></li>
                                     </ul>
-                                </td>
-                            </tr><!-- .nk-tb-item -->
-                        @endforeach
+                                </div>
+                            </div>
+                        </th>
+                    </tr><!-- .nk-tb-item -->
+                </thead>
+                <tbody>
+
+                    @foreach ($products as $product)
+                        <tr class="nk-tb-item">
 
 
-                    </tbody>
-                </table><!-- .nk-tb-list -->
-                <div class="card">
+                            <td class="nk-tb-col nk-tb-col-check">
+                                <div class="custom-control custom-control-sm custom-checkbox notext">
+                                    <input type="checkbox" class="custom-control-input" id="pid-01">
+                                    <label class="custom-control-label" for="pid-01"></label>
+                                </div>
+                            </td>
+
+                            <td class="nk-tb-col">
+                                <span>{{ $product->id }}</span>
+                            </td>
+
+                            <td class="nk-tb-col">
+                                <div class="project-info">
+                                    <h6 class="title">{{ $product->product_name }}</h6>
+                                </div>
+                            </td>
+
+                            <td class="nk-tb-col tb-col-lg">
+                                {{-- <span>{{ Str::of($product->product_details)->words(5,'>>>') }} </span> --}}
+                                <span>{{ Str::limit($product->product_details, 30, '>>>') }} </span>
+                            </td>
+
+                            <td class="nk-tb-col tb-col-lg">
+                                <span>{{ $product->product_price }} </span>
+                            </td>
+                            <td class="nk-tb-col tb-col-lg">
+                                {{-- <span>{{ $product->product_image }} </span> --}}
+                                <img height="80" width="80" src="{{ $product->product_image }}" alt="">
+
+                            </td>
+
+                            <td class="nk-tb-col tb-col-lg">
+                                <span>{{ $product->product_stock }} </span>
+                            </td>
+
+                            <td class="nk-tb-col tb-col-lg">
+                                <span>{{ $product->product_category }} </span>
+                            </td>
+
+
+                            <td class="nk-tb-col nk-tb-col-tools">
+                                <ul class="nk-tb-actions gx-1">
+                                    <li>
+                                        <div class="drodown">
+                                            <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger"
+                                                data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                            <div class="dropdown-menu dropdown-menu-end">
+                                                <ul class="link-list-opt no-bdr">
+                                                    <li><a href="html/apps-kanban.html"><em
+                                                                class="icon ni ni-eye"></em><span>View Project</span></a>
+                                                    </li>
+                                                    <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit
+                                                                Project</span></a></li>
+                                                    <li><a href="#"><em
+                                                                class="icon ni ni-check-round-cut"></em><span>Mark As
+                                                                Done</span></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr><!-- .nk-tb-item -->
+                    @endforeach
+
+
+                </tbody>
+            </table><!-- .nk-tb-list -->
+
+            {{-- pagination --}}
+            <div class="card">
+                        {{ $products->links() }}
+            </div>
+
+            {{-- <div class="card">
                     <div class="card-inner">
                         <div class="nk-block-between-md g-3">
+
                             <div class="g">
+
                                 <ul class="pagination justify-content-center justify-content-md-start">
+
+
                                     <li class="page-item"><a class="page-link" href="#">Prev</a></li>
                                     <li class="page-item"><a class="page-link" href="#">1</a></li>
                                     <li class="page-item"><a class="page-link" href="#">2</a></li>
@@ -209,8 +219,9 @@
                             </div><!-- .pagination-goto -->
                         </div><!-- .nk-block-between -->
                     </div><!-- .card-inner -->
-                </div><!-- .card -->
-            </div><!-- .nk-block -->
+                </div><!-- .card --> --}}
+
+        </div><!-- .nk-block -->
         {{-- End dtable --}}
 
         <div class="nk-add-product toggle-slide toggle-slide-right" data-content="addProduct" data-toggle-screen="any"
@@ -226,7 +237,7 @@
             <div class="nk-block">
                 <div class="row g-3">
 
-                    <form action="{{ url('/products') }}" method="post" >
+                    <form action="{{ url('/products') }}" method="post">
                         @csrf
                         <div class="col-12">
                             <div class="form-group">
@@ -267,11 +278,11 @@
                                 <div class="form-control-wrap">
 
 
-                                    <select name="product_category" class="form-control"  id="product_category">
-                                        <option value="" disabled selected >Select One</option>
+                                    <select name="product_category" class="form-control" id="product_category">
+                                        <option value="" disabled selected>Select One</option>
 
-                                        @foreach ($cats as $cat )
-                                            <option value="{{$cat->id}}"> {{$cat->cat_name}} </option>
+                                        @foreach ($cats as $cat)
+                                            <option value="{{ $cat->id }}"> {{ $cat->cat_name }} </option>
                                         @endforeach
 
                                     </select>
@@ -288,7 +299,8 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary"><em class="icon ni ni-plus"></em><span>Add New</span></button>
+                            <button type="button" id="addnew" class="btn btn-primary"><em class="icon ni ni-plus"></em><span>Add
+                                    New</span></button>
                         </div>
 
                     </form>
@@ -297,8 +309,4 @@
         </div>
 
     </div>
-
-
-
-
 @endsection

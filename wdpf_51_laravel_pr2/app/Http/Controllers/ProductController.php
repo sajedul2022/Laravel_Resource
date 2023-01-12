@@ -16,10 +16,11 @@ class ProductController extends Controller
      */
     public function index(){
 
-        $data['cats'] = Category::orderBy('cat_name', 'ASC')->get();
-        $data['products'] = Product::orderBy('id', 'DESC')->get();
+        $products = Product::latest()->paginate(10);
+        $cats = Category::orderBy('cat_name', 'ASC')->get();
+        // $data['products'] = Product::orderBy('id', 'DESC')->get();
         // dd($data);
-        return view('backend.products.index', $data);
+        return view('backend.products.index', compact('products', 'cats'));
     }
 
     /**

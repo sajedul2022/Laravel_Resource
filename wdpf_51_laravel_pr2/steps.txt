@@ -121,3 +121,13 @@
     {{ Str::of($product->product_details)->words(5,'>>>') }}
 
     {{ Str::limit($product->product_details,30,'>>>') }}
+
+
+                        ** Paginate
+ 1. app\Http\Controllers\ProductController.php
+
+    $products = Product::latest()->paginate(10);
+    return view('backend.products.index', compact('products', 'cats'));
+
+2. frontend
+      {{ $products->links() }}

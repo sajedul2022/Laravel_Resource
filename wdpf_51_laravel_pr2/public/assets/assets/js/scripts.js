@@ -119,7 +119,7 @@
     NioApp.Passcode('.passcode-switch');
   };
 
-  // Toastr Message @v1.0 
+  // Toastr Message @v1.0
   NioApp.Toast = function (msg, ttype, opt) {
     var ttype = ttype ? ttype : 'info',
       msi = '',
@@ -962,3 +962,12 @@
   NioApp.init();
   return NioApp;
 }(NioApp, jQuery);
+
+$(document).ready(function(){
+    $("#addnew").click(function(){
+        // var product_name = $("#product_name").val();
+
+        var f = $("form").serialize();
+        alert(f);
+    })
+})
