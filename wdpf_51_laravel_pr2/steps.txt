@@ -123,7 +123,7 @@
     {{ Str::limit($product->product_details,30,'>>>') }}
 
 
-                        ** Paginate
+                        ** Paginate **
  1. app\Http\Controllers\ProductController.php
 
     $products = Product::latest()->paginate(10);
@@ -131,3 +131,12 @@
 
 2. frontend
       {{ $products->links() }}
+
+OR
+
+1. php artisan vendor:publish --tag=laravel-pagination
+
+2. frontend show
+    {{ $products->links('vendor.pagination.bootstrap-4') }}
+
+

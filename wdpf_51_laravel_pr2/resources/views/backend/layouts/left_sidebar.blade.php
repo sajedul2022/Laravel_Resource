@@ -174,7 +174,7 @@
                                         class="nk-menu-text">Product List</span></a>
                             </li>
                             <li class="nk-menu-item">
-                                <a href="" class="nk-menu-link"><span
+                                <a href="{{ url('products/create') }}" class="nk-menu-link"><span
                                         class="nk-menu-text">Add Product </span></a>
                             </li>
                             <li class="nk-menu-item">

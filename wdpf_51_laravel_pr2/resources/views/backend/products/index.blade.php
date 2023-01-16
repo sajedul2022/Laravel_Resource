@@ -3,6 +3,15 @@
 @section('content')
     <div class="nk-content-body">
 
+        {{-- Message --}}
+
+        @if ($msg = Session::get('msg'))
+            <div class="alert alert-success">
+                {{ $msg }}
+            </div>
+        @endif
+
+
         <div class="nk-block-head nk-block-head-sm">
             <div class="nk-block-between">
                 <div class="nk-block-head-content">
@@ -38,12 +47,10 @@
                                     </div>
                                 </li>
                                 <li class="nk-block-tools-opt">
-                                    <a href="#" data-target="addProduct"
-                                        class="toggle btn btn-icon btn-primary d-md-none"><em
-                                            class="icon ni ni-plus"></em></a>
-                                    <a href="#" data-target="addProduct"
-                                        class="toggle btn btn-primary d-none d-md-inline-flex"><em
-                                            class="icon ni ni-plus"></em><span>Add Product</span></a>
+
+                                    <a href="{{ route('products.create') }}" class=" btn btn-primary"><em
+                                            class="icon ni ni-plus"></em><span>Add Product</span>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -57,12 +64,7 @@
             <table class="nk-tb-list is-separate nk-tb-ulist">
                 <thead>
                     <tr class="nk-tb-item nk-tb-head">
-                        <th class="nk-tb-col nk-tb-col-check">
-                            <div class="custom-control custom-control-sm custom-checkbox notext">
-                                <label class="custom-control-label" for="pid-all">Check</label>
-                                <input type="checkbox" class="custom-control-input" id="pid-all">
-                            </div>
-                        </th>
+
                         <th class="nk-tb-col"><span class="sub-text">ID</span></th>
                         <th class="nk-tb-col"><span class="sub-text">Product Name</span></th>
                         <th class="nk-tb-col"><span class="sub-text">Product Details</span></th>
@@ -94,13 +96,6 @@
                     @foreach ($products as $product)
                         <tr class="nk-tb-item">
 
-
-                            <td class="nk-tb-col nk-tb-col-check">
-                                <div class="custom-control custom-control-sm custom-checkbox notext">
-                                    <input type="checkbox" class="custom-control-input" id="pid-01">
-                                    <label class="custom-control-label" for="pid-01"></label>
-                                </div>
-                            </td>
 
                             <td class="nk-tb-col">
                                 <span>{{ $product->id }}</span>
@@ -166,7 +161,7 @@
 
             {{-- pagination --}}
             <div class="card">
-                        {{ $products->links() }}
+                {{ $products->links('vendor.pagination.bootstrap-4') }}
             </div>
 
             {{-- <div class="card">
@@ -237,7 +232,7 @@
             <div class="nk-block">
                 <div class="row g-3">
 
-                    <form action="{{ url('/products') }}" method="post">
+                    <form action="{{ url('/products') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="col-12">
                             <div class="form-group">
@@ -298,8 +293,10 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-12">
-                            <button type="button" id="addnew" class="btn btn-primary"><em class="icon ni ni-plus"></em><span>Add
+                            <button type="button" id="addnew" class="btn btn-primary"><em
+                                    class="icon ni ni-plus"></em><span>Add
                                     New</span></button>
                         </div>
 

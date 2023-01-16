@@ -963,11 +963,16 @@
   return NioApp;
 }(NioApp, jQuery);
 
+// create form
+
 $(document).ready(function(){
     $("#addnew").click(function(){
         // var product_name = $("#product_name").val();
 
-        var f = $("form").serialize();
-        alert(f);
+        var values = $("form").serialize();
+        // alert(values);
+        $.post('products', values, function(data){
+            alert(data);
+        });
     })
 })

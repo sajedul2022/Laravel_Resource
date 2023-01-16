@@ -28,9 +28,11 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create(){
+
+        $cats = Category::orderBy('cat_name', 'ASC')->get();
+        return view('backend.products.create', compact('cats'));
+
     }
 
     /**
@@ -41,18 +43,37 @@ class ProductController extends Controller
      */
     public function store(Request $request){
 
-        $data = new Product();
+        $validate = $request->validate([
+            'product_name' => 'required',
+            'product_details' => 'required',
+            'product_price' => 'required',
+            'product_category' => 'required',
+            'product_stock' => 'required',
+        ]);
 
-        $data->product_name =  $request->product_name;
-        $data->product_details =  $request->product_details;
-        $data->product_price =  $request->product_price;
-        $data->product_category =  $request->product_category;
-        $data->product_stock =  $request->product_stock;
-        $data->product_image =  $request->product_image;
+        if($validate){
 
-        $data->save();
+            $data = new Product();
+            $data->product_name =  $request->product_name;
+            $data->product_details =  $request->product_details;
+            $data->product_price =  $request->product_price;
+            $data->product_category =  $request->product_category;
+            $data->product_stock =  $request->product_stock;
+            $data->product_image =  $request->product_image;
+            $data->save();
 
-        return redirect('/products');
+            // echo "Success";
+
+            return redirect('/products')->with('msg', 'Product Added');
+
+
+        }else{
+            echo "Fail";
+        }
+
+
+
+
 
     }
 
