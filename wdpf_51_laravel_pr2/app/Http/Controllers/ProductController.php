@@ -49,6 +49,7 @@ class ProductController extends Controller
             'product_price' => 'required',
             'product_category' => 'required',
             'product_stock' => 'required',
+            'product_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         if($validate){
@@ -59,7 +60,16 @@ class ProductController extends Controller
             $data->product_price =  $request->product_price;
             $data->product_category =  $request->product_category;
             $data->product_stock =  $request->product_stock;
-            $data->product_image =  $request->product_image;
+
+            if($request->product_image){
+                $imageName = time().'.'.$request->product_image->extension();
+                $request->product_image->move(public_path('product_photos'), $imageName);
+                $data->product_image =  $imageName;
+            }else{
+                $data->product_image =  "";
+            }
+
+
             $data->save();
 
             // echo "Success";
@@ -72,9 +82,6 @@ class ProductController extends Controller
         }
 
 
-
-
-
     }
 
     /**
@@ -83,9 +90,9 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
-    {
-        //
+    public function show(Product $product){
+
+        return view('backend.products.single', compact('product'));
     }
 
     /**

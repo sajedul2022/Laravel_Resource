@@ -89,19 +89,16 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-12">
-                        <div class="upload-zone small bg-lighter my-2">
-                            <div class="dz-message">
-                                {{-- <span class="dz-message-text">Drag & drop file Image</span> --}}
-                                <input type="file" name="product_image" id="product_image">
-                            </div>
-                        </div>
+                    <br/>
+                    <div class="col-md-12 form-group" >
+                                <label class="form-label" for="category">Image</label>
+                                <input class="form-group" type="file" name="product_image" id="product_image">
                     </div>
 
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-primary"><em class="icon ni ni-plus"></em><span>Add
-                                New</span></button>
+                    <div class="col-12" class="form-group">
+                        <button type="submit" class="btn btn-primary"><em class="icon ni ni-plus"></em>
+                            <span>AddNew</span>
+                        </button>
                     </div>
 
                 </form>

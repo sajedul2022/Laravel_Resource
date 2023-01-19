@@ -140,3 +140,34 @@ OR
     {{ $products->links('vendor.pagination.bootstrap-4') }}
 
 
+                        ===================== Image upload ==============
+
+1. app\Http\Controllers\ProductController.php
+
+    if($request->product_image){
+                $imageName = time().'.'.$request->product_image->extension();
+                $request->product_image->move(public_path('product_photos'), $imageName);
+                $data->product_image =  $imageName;
+            }else{
+                $data->product_image =  "";
+            }
+     $data->save();
+
+2. resources\views\backend\products\create.blade.php
+
+    <input class="form-group" type="file" name="product_image" id="product_image">
+
+3. resources\views\backend\products\index.blade.php   show imageName
+    src="{{ 'product_photos/'.$product->product_image }}"
+
+
+            ========= edit =============
+1. resources\views\backend\products\index.blade.php
+    <a href="{{ route('products.show', $product->id ) }}">
+
+2. controller
+     public function show(Product $product){
+        return view('backend.products.single');
+    }
+
+3.

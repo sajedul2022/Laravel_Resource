@@ -117,7 +117,7 @@
                             </td>
                             <td class="nk-tb-col tb-col-lg">
                                 {{-- <span>{{ $product->product_image }} </span> --}}
-                                <img height="80" width="80" src="{{ $product->product_image }}" alt="">
+                                <img height="80" width="80" src="{{ 'product_photos/'.$product->product_image }}" alt="">
 
                             </td>
 
@@ -138,10 +138,11 @@
                                                 data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                             <div class="dropdown-menu dropdown-menu-end">
                                                 <ul class="link-list-opt no-bdr">
-                                                    <li><a href="html/apps-kanban.html"><em
+                                                    <li>
+                                                        <a href="{{ route('products.show', $product->id ) }}"><em
                                                                 class="icon ni ni-eye"></em><span>View Project</span></a>
                                                     </li>
-                                                    <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit
+                                                    <li><a href=""><em class="icon ni ni-edit"></em><span>Edit
                                                                 Project</span></a></li>
                                                     <li><a href="#"><em
                                                                 class="icon ni ni-check-round-cut"></em><span>Mark As
