@@ -976,3 +976,9 @@ $(document).ready(function(){
         });
     })
 })
+
+// $(document).ready(function(){
+//     $('#remove').click(function(){
+
+//     })
+// })

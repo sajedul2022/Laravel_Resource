@@ -84,7 +84,7 @@
                                         <li><a href="#"><em class="icon ni ni-archive"></em><span>Mark As
                                                     Archive</span></a></li>
                                         <li><a href="#"><em class="icon ni ni-trash"></em><span>Remove
-                                                    Projects</span></a></li>
+                                                    Products</span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -117,7 +117,8 @@
                             </td>
                             <td class="nk-tb-col tb-col-lg">
                                 {{-- <span>{{ $product->product_image }} </span> --}}
-                                <img height="80" width="80" src="{{ 'product_photos/'.$product->product_image }}" alt="">
+                                <img height="80" width="80" src="{{ 'product_photos/' . $product->product_image }}"
+                                    alt="">
 
                             </td>
 
@@ -139,14 +140,27 @@
                                             <div class="dropdown-menu dropdown-menu-end">
                                                 <ul class="link-list-opt no-bdr">
                                                     <li>
-                                                        <a href="{{ route('products.show', $product->id ) }}"><em
-                                                                class="icon ni ni-eye"></em><span>View Project</span></a>
+                                                        <a href="{{ route('products.show', $product->id) }}"><em
+                                                                class="icon ni ni-eye"></em><span>View Products</span></a>
                                                     </li>
-                                                    <li><a href=""><em class="icon ni ni-edit"></em><span>Edit
-                                                                Project</span></a></li>
-                                                    <li><a href="#"><em
+
+                                                    <li><a href="{{ route('products.edit', $product->id) }}"><em class="icon ni ni-edit"></em><span>Edit
+                                                        Products</span></a></li>
+
+                                                    <li><a href="{{ route('products.index') }}"><em
                                                                 class="icon ni ni-check-round-cut"></em><span>Mark As
                                                                 Done</span></a></li>
+
+                                                    <li>
+                                                        <form action="{{ route('products.destroy', $product->id) }}" class="remove" id="remove" method="post" onsubmit="return confirm('Are you want to sure Delete?')" >
+
+                                                        @csrf
+                                                        {{method_field('DELETE')}}
+
+                                                        <a href=""></a><em class="icon ni ni-trash"></em>
+                                                        <input type="submit" class="btn btn-warning " value="Delete" />
+                                                        </form>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>

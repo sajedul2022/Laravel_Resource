@@ -12,7 +12,7 @@
                         </div>
                     </div>
                     <div class="nk-block-head-content">
-                        <a href="html/product-list.html" class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
+                        <a href="{{ route('products.index') }}" class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
                                 class="icon ni ni-arrow-left"></em><span>Back</span></a>
                         <a href="html/product-list.html"
                             class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em

@@ -161,7 +161,8 @@ OR
     src="{{ 'product_photos/'.$product->product_image }}"
 
 
-            ========= edit =============
+            ========= show  =============
+
 1. resources\views\backend\products\index.blade.php
     <a href="{{ route('products.show', $product->id ) }}">
 
@@ -170,4 +171,49 @@ OR
         return view('backend.products.single');
     }
 
-3.
+==== edit ===
+
+
+
+1.  resources\views\backend\products\index.blade.php
+<a href="{{ route('products.edit', $product->id) }}"><em class="icon ni ni-edit"></em><span>Edit
+    Products</span></a>
+
+
+2. controller
+
+    public function edit(Product $product){
+
+        $cats = Category::get();
+        return view('backend.products.edit', compact('product', 'cats'));
+    }
+
+3. edit.blade.php
+
+    value="{{ old('product_stock') ? old('product_stock') : $product->product_stock }}"
+
+select Category
+
+        <option {{ old('product_category') ? (old('product_category') == $cat->id ? 'selected' : '') : ($product->product_category == $cat->id ? 'selected' : '' ) }}
+                value="{{ $cat->id }}">
+
+                {{ $cat->cat_name }}
+
+        </option>
+
+
+
+
+=================== Delete =====================
+1. index.blade.php
+
+ <form action="{{ route('products.destroy', $product->id) }}" class="remove" id="remove" method="post" onsubmit="return confirm('Are you want to sure Delete?')" >
+
+        @csrf
+        {{method_field('DELETE')}}
+
+        <a href=""></a><em class="icon ni ni-trash"></em>
+        <input type="submit" class="btn btn-warning " value="Delete" />
+</form>
+
+2.

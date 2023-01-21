@@ -49,7 +49,7 @@ class ProductController extends Controller
             'product_price' => 'required',
             'product_category' => 'required',
             'product_stock' => 'required',
-            'product_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'product_image' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         if($validate){
@@ -101,9 +101,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
-    {
-        //
+    public function edit(Product $product){
+
+        $cats = Category::get();
+        return view('backend.products.edit', compact('product', 'cats'));
     }
 
     /**
@@ -113,9 +114,38 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
-    {
-        //
+    public function update(Request $request, Product $product){
+
+        $validate = $request->validate([
+            'product_name' => 'required',
+            'product_details' => 'required',
+            'product_price' => 'required',
+            'product_category' => 'required',
+            'product_stock' => 'required',
+            'product_image' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if($validate){
+            $product->product_name =  $request->product_name;
+            $product->product_details =  $request->product_details;
+            $product->product_price =  $request->product_price;
+            $product->product_category =  $request->product_category;
+            $product->product_stock =  $request->product_stock;
+
+            if($request->product_image){
+                $imageName = time().'.'.$request->product_image->extension();
+                $request->product_image->move(public_path('product_photos'), $imageName);
+                $product->product_image =  $imageName;
+            }
+
+            $product->update();
+
+
+            return redirect('/products')->with('msg', 'Product Updated!');
+
+
+        }
+
     }
 
     /**
@@ -124,8 +154,9 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
-    {
-        //
+    public function destroy(Product $product){
+
+        $product->delete();
+        return redirect('/products')->with('msg', 'Product Delete');
     }
 }

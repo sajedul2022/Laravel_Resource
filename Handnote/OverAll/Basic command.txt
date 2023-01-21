@@ -16,7 +16,7 @@ Directory
 
 
 ----- CLI Command ----
-
+0.0  composer create-project laravel/laravel:^8 laravel_Auth
 
 0. Install Laravel globally
 
