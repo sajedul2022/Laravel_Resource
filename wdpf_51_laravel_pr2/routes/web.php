@@ -1,8 +1,13 @@
 <?php
 
 use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\showAge;
+use App\Http\Middleware\AuthLogin;
+use App\Http\Middleware\checkAge;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +20,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
-Route::get('/', [dashboardController::class, 'index'])->name('home');
+
 Route::resource('/products', ProductController::class);
+
+
+
+ Route::middleware([checkAge::class])->group(function(){
+    Route::get('showage', [showAge::class, 'index']);
+ });
+
+Route::get('/dashboard', [dashboardController::class, 'index'])->name('home');
+
+Route::get('/', [LoginController::class, 'index']);
+
+Route::middleware([AuthLogin::class])->group(function(){
+
+    Route::post('/login', [LoginController::class, 'login']);
+    // Route::get('/dashboard', [dashboardController::class, 'index'])->name('home');
+
+
+
+});
 
