@@ -39,7 +39,12 @@ Route::middleware([AuthLogin::class])->group(function(){
     Route::post('/login', [LoginController::class, 'login']);
     // Route::get('/dashboard', [dashboardController::class, 'index'])->name('home');
 
-
-
 });
 
+Route::get('/job', function(){
+    return view('jobs');
+});
+
+Route::get('/about', function(){
+    return view('about');
+});
