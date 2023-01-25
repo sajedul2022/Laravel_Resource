@@ -26,7 +26,7 @@ Route::get('/contact', function(){
 
 Route::get('/there', function () {
     return "You're there!";
-}); 
+});
 
 // Redirect
 Route::redirect('/contact2', '/there');
@@ -68,15 +68,15 @@ Route::get('/user2/{id}', function($id){
 //     return "Id: $id and Name: $name";
 // })->where(['id' => '[0-9]+', 'name' => '[a-z]+']); //Accept both Alphabetic
 
-// use laravel Build in method in RegEx and use optional / coalasing 
+// use laravel Build in method in RegEx and use optional / coalasing
 Route::get('/user3/{id?}/{name?}', function ($id = null, $name=null) {
     return "Id: $id and Name: $name";
-})->whereNumber('id')->whereAlpha('name'); 
+})->whereNumber('id')->whereAlpha('name');
 
 Route::get('/user4/{name}', function ($name) {
     return "Welcome $name";
 })->whereAlphaNumeric('name');
- 
+
 Route::get('/user5/{id}', function ($id) {
     return "Welcome , Your Id is: $id";
 })->whereUuid('id');
@@ -103,35 +103,35 @@ Route::get('/profile/signup/dashboard', function () {
 
 // Route Groups
 
-Route::group(["prefix"=>"/product"], function(){  
-    Route::get('/create',function(){  
+Route::group(["prefix"=>"/product"], function(){
+    Route::get('/create',function(){
     echo "First route for Create/Insert";
-    });  
-    Route::get('/read',function(){  
-    echo "Second route for Read";  
-    });  
-    Route::get('/update/{id}',function($id){  
-    echo "Third route for Update";  
     });
-    Route::get('/delete/{id}',function($id){  
-     echo "Fourth route for Delete";  
-     });  
+    Route::get('/read',function(){
+    echo "Second route for Read";
+    });
+    Route::get('/update/{id}',function($id){
+    echo "Third route for Update";
+    });
+    Route::get('/delete/{id}',function($id){
+     echo "Fourth route for Delete";
+     });
  });
 
  // Route Prefixes
- Route::group(["prefix"=>"/user"], function(){  
-    Route::get('/create',function(){  
+ Route::group(["prefix"=>"/user"], function(){
+    Route::get('/create',function(){
     echo "First route for Create/Insert";
-    });  
-    Route::get('/read',function(){  
-    echo "Second route for Read";  
-    });  
-    Route::get('/update/{id}',function($id){  
-    echo "Third route for Update. $id";  
     });
-    Route::get('/delete/{id}',function($id){  
-     echo "Fourth route for Delete";  
-     });  
+    Route::get('/read',function(){
+    echo "Second route for Read";
+    });
+    Route::get('/update/{id}',function($id){
+    echo "Third route for Update. $id";
+    });
+    Route::get('/delete/{id}',function($id){
+     echo "Fourth route for Delete";
+     });
  });
 
  //Route Group Controller
@@ -142,25 +142,25 @@ Route::group(["prefix"=>"/product"], function(){
 //     ->name('user.')
 //     ->controller(UserController::class)
 //     ->group(function () {
-//         Route::get('/create','create')->name('create');  
-//         Route::get('/read','read')->name('read'); 
+//         Route::get('/create','create')->name('create');
+//         Route::get('/read','read')->name('read');
 //         Route::get('/update/{id}','update')->name('update');
-//         Route::get('/delete/{id}','delete')->name('delete'); 
+//         Route::get('/delete/{id}','delete')->name('delete');
 // });
 
 // Middleware
 
 use App\Http\Controllers\showAge;
 use App\Http\Middleware\checkAge;
- 
+
 Route::middleware([checkAge::class])->group(function(){
-  
+
     Route::get('showage', [showAge::class,'index']);
-  
+
  });
 
 
-// Controller Use 
+// Controller Use
 
 
 
@@ -172,19 +172,19 @@ Route::get('/home/{name?}/{age?}', [homeController::class, 'index']);
 
 // নির্দিষ্ট Method এ কোনো নির্দিষ্ট Parameter ছাড়া যেকোনো Request Receive করা
 
- 
+
 Route::get('/geturldata', [homeController::class, 'geturldata']);
 
 // ------- USer Control -----------
 
 use App\Http\Controllers\UserController;
- 
+
 Route::get('/userlist/{id}', [UserController::class, 'show']);
 
 // Single Action/invokable controller
 
 // use App\Http\Controllers\testController;
- 
+
 // Route::get('/{pages}', testController::class)
 //     ->name('pagelink')
 //     ->where('invokable-pages','faq|contact|terms');
@@ -192,7 +192,7 @@ Route::get('/userlist/{id}', [UserController::class, 'show']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Post man Api Check 
+// Post man Api Check
 Route::get('test', function(){
     return "Hello, Laravel";
 });
