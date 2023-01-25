@@ -3,9 +3,11 @@
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\showAge;
+use App\Http\Controllers\TestController;
 use App\Http\Middleware\AuthLogin;
 use App\Http\Middleware\checkAge;
 
@@ -48,3 +50,7 @@ Route::get('/job', function(){
 Route::get('/about', function(){
     return view('about');
 });
+
+// test
+Route::get('/test', [TestController::class, 'testdata']);
+Route::get('/report1', [ReportController::class, 'report1']);

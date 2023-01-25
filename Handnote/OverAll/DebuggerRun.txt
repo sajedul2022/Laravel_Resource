@@ -1,0 +1,10 @@
+https://github.com/barryvdh/laravel-debugbar
+
+1. composer require barryvdh/laravel-debugbar --dev
+
+2. add this to your facades in app.php:
+
+'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
+
+
+3. php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
