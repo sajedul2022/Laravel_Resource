@@ -10,8 +10,9 @@
 
 
 
-        @foreach ( )
-            <h1>{{}}</h1>
+        @foreach ( $datas as $data )
+            <h1>{{ $data->city }}</h1>
+            <h1>{{ $data->phone }}</h1>
         @endforeach
 
 

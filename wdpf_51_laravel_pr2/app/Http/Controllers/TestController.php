@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Test;
+
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class TestController extends Controller
 {
    public function testdata(){
-        $conn = new Test();
-        $data = $conn->setConnection('mysqlOne');
-        $sql = 'SELECT customerName FROM customers';
-        $datas = $data($sql);
 
-        return view('test', $datas);
+
+        $conn = DB::connection('mysqlOne');
+        $datas =   $conn->table('offices')->select('*')->get();
+
+        // echo "<pre>";
+        // print_r($datas);
+
+        return view('test', compact('datas'));
 
 
    }
