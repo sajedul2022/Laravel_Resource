@@ -99,3 +99,24 @@
     }
 
     php artisan db:seed
+
+
+
+OR
+
+1. php artisan make:factory LeadFactory --model=Lead
+
+1.1 table migration scheme create
+
+
+2. database\factories\LeadFactory.php
+
+    return [
+            'name' => $this->faker->name,
+            'email' => $this->faker->email,
+            'phone' => $this->faker->phoneNumber
+        ];
+3. Seeder
+        Lead::factory(100)->create();
+
+4. php artisan migrate:fresh --seed
