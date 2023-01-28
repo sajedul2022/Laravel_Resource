@@ -1,0 +1,6 @@
+1. go to (app.blade.php, guest.blade.php) and remove @vite like this
+
+ @vite(['resources/css/app.css', 'resources/js/app.js']) => Remove this and add following
+
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<script src="{{ asset('js/app.js') }}" defer></script>

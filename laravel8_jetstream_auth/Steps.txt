@@ -6,3 +6,35 @@
 
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 <script src="{{ asset('js/app.js') }}" defer></script>
+
+2. errors shadow
+
+     {{-- error show --}}
+
+            @if ($errors->any())
+                <div class="alert alert-danger ">
+                    <ul>
+                        @foreach ($errors->all() as $error )
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+
+            @endif
+
+
+2. php artisan make:controller backend/UserController -r
+
+============ Stack scripts, css ============
+1. master layouts
+     @stack('scripts')
+
+2. child template
+
+    @push('scripts')
+
+        <!-- Bootstrap core JavaScript-->
+        <script src="/backend_assets/vendor/jquery/jquery.min.js"></script>
+        <script src="/backend_assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    @endpush
