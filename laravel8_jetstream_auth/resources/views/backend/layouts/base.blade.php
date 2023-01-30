@@ -19,6 +19,8 @@
     <!-- Custom styles for this template-->
     <link href="/backend_assets/css/sb-admin-2.min.css" rel="stylesheet">
 
+    @stack('styles')
+
 </head>
 
 <body id="page-top">
@@ -41,11 +43,11 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+
 
                     @yield('content')
 
-                </div>
+
                 <!-- /.container-fluid -->
 
             </div>

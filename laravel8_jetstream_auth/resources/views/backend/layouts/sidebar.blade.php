@@ -72,20 +72,18 @@
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="/backend_assets/#" data-toggle="collapse"
-            data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+            data-target="#user" aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-fw fa-folder"></i>
-            <span>Pages</span>
+            <span>Users</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="user" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Login Screens:</h6>
-                <a class="collapse-item" href="/backend_assets/login.html">Login</a>
-                <a class="collapse-item" href="/backend_assets/register.html">Register</a>
-                <a class="collapse-item" href="/backend_assets/forgot-password.html">Forgot Password</a>
+                <h6 class="collapse-header">User option:</h6>
+                <a class="collapse-item" href="{{ route('users.index') }}">All User</a>
+                <a class="collapse-item" href="{{ route('users.create') }}">Create User</a>
+
                 <div class="collapse-divider"></div>
-                <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="/backend_assets/404.html">404 Page</a>
-                <a class="collapse-item" href="/backend_assets/blank.html">Blank Page</a>
+
             </div>
         </div>
     </li>
@@ -112,14 +110,6 @@
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
 
-    <!-- Sidebar Message -->
-    <div class="sidebar-card d-none d-lg-flex">
-        <img class="sidebar-card-illustration mb-2" src="/backend_assets/img/undraw_rocket.svg"
-            alt="...">
-        <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components,
-            and more!</p>
-        <a class="btn btn-success btn-sm"
-            href="/backend_assets/https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-    </div>
+
 
 </ul>
