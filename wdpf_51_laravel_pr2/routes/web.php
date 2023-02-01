@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\showAge;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\AuthLogin;
 use App\Http\Middleware\checkAge;
 
@@ -54,3 +55,7 @@ Route::get('/about', function(){
 // test
 Route::get('/test', [TestController::class, 'testdata']);
 Route::get('/report1', [ReportController::class, 'report1']);
+
+// orm
+Route::get('/users', [UserController::class, 'index']);
+Route::get('/phone', [UserController::class, 'phoneData']);

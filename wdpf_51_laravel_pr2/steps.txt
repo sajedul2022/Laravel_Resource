@@ -281,3 +281,8 @@ select Category
         print_r($datas);
 
          return view('test', compact('datas'));
+
+================ Eloquent ORM ==============
+1.https://www.itsolutionstuff.com/post/laravel-one-to-one-eloquent-relationship-tutorialexample.html
+
+    php artisan make:model Phone -mc
