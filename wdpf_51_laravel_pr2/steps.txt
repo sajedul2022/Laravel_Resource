@@ -283,6 +283,27 @@ select Category
          return view('test', compact('datas'));
 
 ================ Eloquent ORM ==============
+
 1.https://www.itsolutionstuff.com/post/laravel-one-to-one-eloquent-relationship-tutorialexample.html
 
     php artisan make:model Phone -mc
+    php artisan make:model Post -mc
+    php artisan make:model Comment -mc
+
+*** manually data seed in seeder
+
+for ($i = 1; $i <= 15; $i++) {
+            $post = new Post();
+            $post->name = Str::random(20);
+            $post->save();
+        }
+
+        // Comment seeder
+
+        for ($i = 1; $i <= 50; $i++) {
+            $comment = new Comment();
+            $comment->post_id = rand(1, 15);
+            $comment->comment = Str::random(40);
+
+            $comment->save();
+        }

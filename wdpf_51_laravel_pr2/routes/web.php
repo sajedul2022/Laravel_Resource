@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
@@ -56,6 +58,10 @@ Route::get('/about', function(){
 Route::get('/test', [TestController::class, 'testdata']);
 Route::get('/report1', [ReportController::class, 'report1']);
 
-// orm
+// ORM
 Route::get('/users', [UserController::class, 'index']);
 Route::get('/phone', [UserController::class, 'phoneData']);
+Route::get('/post', [PostController::class, 'postView']);
+Route::get('/comment', [CommentController::class, 'commentView']);
+Route::get('/roles', [UserController::class, 'roleAssign']);
+Route::get('/roleShow', [UserController::class, 'roleShow']);
