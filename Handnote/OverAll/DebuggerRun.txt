@@ -4,6 +4,8 @@ https://github.com/barryvdh/laravel-debugbar
 
 2. add this to your facades in app.php:
 
+ 'aliases' =>
+
 'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
 
 
