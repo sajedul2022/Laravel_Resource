@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReportController;
@@ -65,3 +66,11 @@ Route::get('/post', [PostController::class, 'postView']);
 Route::get('/comment', [CommentController::class, 'commentView']);
 Route::get('/roles', [UserController::class, 'roleAssign']);
 Route::get('/roleShow', [UserController::class, 'roleShow']);
+
+// mail
+
+Route::get('send-mail', [MailController::class, 'index']);
+Route::get('contact', [MailController::class, 'contactForm']);
+Route::post('contact', [MailController::class, 'messageSend'])->name('sendMessage');
+
+
