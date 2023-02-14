@@ -29,8 +29,8 @@ Route::get('/user', function(){
     return "Hello" ;
 });
 
-Route::resource('/products', ApiProductController::class);
-
 Route::post('/search', [SearchController::class , 'search']);
+
+Route::apiResource('/products', ApiProductController::class);
 
 

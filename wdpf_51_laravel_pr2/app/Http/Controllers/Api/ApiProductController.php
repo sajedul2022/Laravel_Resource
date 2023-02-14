@@ -8,25 +8,18 @@ use Illuminate\Http\Request;
 
 class ApiProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        return Product::all();
+        return Product::orderBy('id', 'desc')->get();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request){
+
+    public function store(Request $request)
+    {
 
         $stores = $request->all();
+        // return $stores = $request->prod_detais;
 
         $request->validate([
             'product_name' => 'required',
@@ -34,49 +27,38 @@ class ApiProductController extends Controller
             'product_price' => 'required',
             'product_category' => 'required',
             'product_stock' => 'required',
-            'product_image' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // 'product_image' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
 
 
-       return  Product::create($stores);
+          Product::create($stores);
+          return response()->json(['msg' => 'Successfully Inserted']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id){
+
+    public function update(Request $request, $id)
+    {
 
         $product = Product::findOrFail($id);
         $input = $request->all();
-        return $product->update($input);
+        $product->update($input);
+        return response()->json(['msg' => 'Update']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id){
+
+    public function destroy($id)
+    {
 
         $product = Product::findOrFail($id);
 
-        return $product->delete($id);
+        $product->delete($id);
+        return response()->json(['msg' => 'Successfully Deleted']);
     }
 }
