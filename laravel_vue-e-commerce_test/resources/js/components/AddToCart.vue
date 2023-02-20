@@ -1,7 +1,7 @@
 <template>
     <div>
          <hr>
-        <button class="btn btn-warning text-center" 
+        <button class="btn btn-warning text-center"
             v-on:click.prevent="addProductToCart()">
             Add To Cart
         </button>
@@ -12,7 +12,7 @@
     export default {
         data(){
             return {
-                
+
             }
         },
         props:['productId', 'userId'],
